@@ -111,11 +111,13 @@ def run():
                     if "-" not in port_range:
                         print(Fore.RED + Style.BRIGHT + "Invalid range format. Start port and end port must be seperated by a hyphen (-)")
 
-                    try:
-                        start, end = start, end = map(int, port_range.split("-"))
-                    except ValueError:
-                        print(Fore.RED + Style.BRIGHT + "Invalid port value. Port must be a number")
+                    start, end = port_range.split("-")
+                    if not start.strip().isdigit() or not end.strip().isdigit():
+                        print(Fore.RED + Style.BRIGHT + "Start and end port values must be numbers.")
                         return
+                    
+                    start = int(start.strip())
+                    end = int(end.strip())
 
                     if not is_valid_port(start) or not is_valid_port(end):
                         print(Fore.RED + Style.BRIGHT + "Start port and end port must be in range from 1-65536")
