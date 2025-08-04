@@ -132,13 +132,13 @@ def run():
                     print(Fore.RED + Style.BRIGHT + "Invalid command !")
                     continue
 
-                print(Fore.RESET + Style.BRIGHT + f"\nStarting SYN scan on {ip_address} at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+                print(Fore.RESET + Style.BRIGHT + f"\nStarting SYN scan on {Fore.YELLOW}{Style.BRIGHT}{ip_address} {Fore.RESET}{Style.RESET_ALL} at {Style.BRIGHT}{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
                 #Time counter
                 start_time = time.time()
                 scan_ports(ip_address, port_list)
                 end_time = time.time()
 
-                print(Fore.RESET + Style.BRIGHT + f"\nScan completed ! IP address {ip_address} scanned in {round(end_time - start_time, 2)} seconds.")
+                print(Fore.RESET + Style.BRIGHT + f"\nScan completed ! IP address {Fore.YELLOW}{Style.BRIGHT}{ip_address} {Fore.RESET}{Style.RESET_ALL} scanned in {Fore.YELLOW}{Style.BRIGHT}{round(end_time - start_time, 2)} seconds.")
                 break # Scan is completed, break the loop
 
 
