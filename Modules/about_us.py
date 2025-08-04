@@ -3,7 +3,7 @@ from colorama import Fore, Style
 from time import sleep
 
 #import utils module
-import utils
+from Modules import utils
 
 # Main funtion
 def run():

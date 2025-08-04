@@ -41,7 +41,7 @@ this program and how to use it""" + "\n")
 
 #Display goodbye message if users quit the program
 def goodbye():
-    print(Fore.YELLOW + Style.BRIGHT + "Quitting...\n")
+    print(Fore.RED + Style.BRIGHT + "Quitting...\n")
     sleep(2)
     print(Fore.CYAN + Style.BRIGHT + "Goodbye :) !")
     print(Fore.CYAN + Style.BRIGHT + "------------------------------------------------------------------------------")

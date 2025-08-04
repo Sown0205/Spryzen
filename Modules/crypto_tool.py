@@ -11,7 +11,7 @@ from time import sleep
 init(autoreset=True)
 
 #Import utils module to use reuseable code
-import utils
+from Modules import utils
 
 # Function to generate a random AES-256 key size
 def generate_key():

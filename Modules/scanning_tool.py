@@ -6,10 +6,12 @@ import threading
 from scapy.all import IP, TCP, sr1, send
 from colorama import Fore, Style, init
 import re
+import sys
+from datetime import datetime
 init(autoreset=True)
 
 #Import utils modulde to use reusable code
-import utils
+from Modules import utils
 
 # Function to validate IP address
 def is_valid_ip(ip_add):
@@ -56,19 +58,24 @@ def scan_ports(target, ports):
 
 #Execute function
 def run():
-    print(Fore.CYAN + Style.BRIGHT + "\n----------------------------------Using Port Scanning Tool--------------------------------------------")
+    print(Fore.CYAN + Style.BRIGHT + "----------------------------------Using Port Scanning Tool--------------------------------------------\n")
     
     while True:
-        ip_address = input(Fore.CYAN + Style.BRIGHT + "Enter you IP address here to type 'quit' to exit the program: ")
+        ip_address = input(Fore.RESET + Style.BRIGHT + "Enter your IP address here or type 'quit' to exit the program: ")
 
         if ip_address == "quit":
-            print(Fore.CYAN + Style.BRIGHT + "Quitting...")
+            print(Fore.RED + Style.BRIGHT + "Quitting...")
             time.sleep(1)
             utils.show_menu()
             break
 
         else:
-            if not is_valid_ip(ip_address):
+
+            if not ip_address:
+                print(Fore.YELLOW + Style.BRIGHT + "IP address missing. Please provide a IP address")
+                continue
+
+            elif not is_valid_ip(ip_address):
                 print(Fore.RED + Style.BRIGHT + "Invalid IP address !")
                 continue
 
@@ -86,12 +93,47 @@ def run():
                             print(Fore.RED + Style.BRIGHT + f"Invalid port {port} ! Ports value must be a number")
                             continue
 
+                        port = int(port)
+                        if not is_valid_port(port):
+                            print(Fore.RED + Style.BRIGHT + "Invalid port value ! Port value must be between 1-65535")
+                            continue
+
+                        port_list = []
+                        port_list.append(port) #Use a list to list all ports 
+
                 elif prompt == "range":
-                    ajfefnefn
+                    print(Fore.CYAN + Style.BRIGHT + "Specify your port range here. Caution: start port and end port must be seperated by a hyphen (-)")
+                    print("Example: 1-1000 or 100-500")
+
+                    range = input(Fore.CYAN + Style.BRIGHT + "Enter your port range: ")
+
+                    if "-" not in range:
+                        print(Fore.RED + Style.BRIGHT + "Invalid range format. Start port and end port must be seperated by a hyphen (-)")
+
+                    start, end = range.split("-")
+
+                    if not is_valid_port(start) or not is_valid_port(end):
+                        print(Fore.RED + Style.BRIGHT + "Start port and end port must be in range from 1-65536")
+
+                    if start > end: 
+                        print(Fore.RED + Style.BRIGHT + "Start port must be smaller than end port") 
+
+                    port_list = []
+                    port_list.extend(range(start, end + 1))                   
 
                 else:
                     print(Fore.RED + Style.BRIGHT + "Invalid command !")
                     continue
+
+                print(Fore.RESET + Style.BRIGHT + f"\nStarting SYN scan on {ip_address} at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+                #Time counter
+                start_time = time.time()
+                scan_ports(ip_address, port_list)
+                end_time = time.time()
+
+                print(Fore.RESET + Style.BRIGHT + f"\nScan completed ! IP address {ip_address} scanned in {round(end_time - start_time, 2)} seconds.")
+                break # Scan is completed, break the loop
+
 
         
 

@@ -1,13 +1,12 @@
 #Required libraries: requests, argparse, colorama
 import requests
-import argparse
 from colorama import Fore, Style, init
 init(autoreset=True)
 import re
 from time import sleep
 
 #import utils - using reusable code 
-import utils
+from Modules import utils
 
 #Trace IP function
 def trace_ip(ip_address):
