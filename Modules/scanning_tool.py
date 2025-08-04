@@ -87,6 +87,8 @@ def run():
                     print("Example: 80 or 135,139,445")
                     ports = input(Fore.CYAN + Style.BRIGHT + "Enter your port/ports: ")
 
+                    port_list = []
+
                     for port in ports.split(","):
                         port = port.strip()
                         if not port.isdigit(): #Check if port is numeric
@@ -98,19 +100,22 @@ def run():
                             print(Fore.RED + Style.BRIGHT + "Invalid port value ! Port value must be between 1-65535")
                             continue
 
-                        port_list = []
                         port_list.append(port) #Use a list to list all ports 
 
                 elif prompt == "range":
                     print(Fore.CYAN + Style.BRIGHT + "Specify your port range here. Caution: start port and end port must be seperated by a hyphen (-)")
                     print("Example: 1-1000 or 100-500")
 
-                    range = input(Fore.CYAN + Style.BRIGHT + "Enter your port range: ")
+                    port_range = input(Fore.CYAN + Style.BRIGHT + "Enter your port range: ")
 
-                    if "-" not in range:
+                    if "-" not in port_range:
                         print(Fore.RED + Style.BRIGHT + "Invalid range format. Start port and end port must be seperated by a hyphen (-)")
 
-                    start, end = range.split("-")
+                    try:
+                        start, end = start, end = map(int, port_range.split("-"))
+                    except ValueError:
+                        print(Fore.RED + Style.BRIGHT + "Invalid port value. Port must be a number")
+                        return
 
                     if not is_valid_port(start) or not is_valid_port(end):
                         print(Fore.RED + Style.BRIGHT + "Start port and end port must be in range from 1-65536")
@@ -119,7 +124,7 @@ def run():
                         print(Fore.RED + Style.BRIGHT + "Start port must be smaller than end port") 
 
                     port_list = []
-                    port_list.extend(range(start, end + 1))                   
+                    port_list = list(range(start, end + 1))                   
 
                 else:
                     print(Fore.RED + Style.BRIGHT + "Invalid command !")
