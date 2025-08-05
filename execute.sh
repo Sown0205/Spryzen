@@ -5,7 +5,14 @@
 # and they can run the tool in anywhere rather than in just Spryzen folder
 
 echo "[+] Creating spryzen command shortcut..."
-ln -sf "$(pwd)/spryzen.py" /usr/local/bin/spryzen
+
+#Requires root access to run
+if [ "$EUID" -ne 0 ]; then
+    echo -e "${RED}[!] Please run as root: sudo ./execute.sh${NC}"
+    exit 1      
+else
+    ln -sf "$(pwd)/spryzen.py" /usr/local/bin/spryzen  
+fi
 
 echo "Now you can run the tool in anywhere with this command: spryzen - or sudo spryzen"
 
