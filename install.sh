@@ -8,7 +8,7 @@
 # scapy
 # re
 
-pip install argparse cryptography colorama requests threading scapy re
+pip install argparse cryptography colorama requests scapy re
 
 # Run bash install.sh or sudo chmod +x install.sh --> ./install.sh to install these libraries
 

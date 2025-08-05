@@ -1,4 +1,3 @@
-import sys
 from colorama import Fore, Style
 from time import sleep
 
@@ -15,20 +14,20 @@ def run():
         Fore.RESET + Style.BRIGHT + "3. Scanning Tool - scan open TCP ports in an IP address",
         "",
         Fore.YELLOW + Style.BRIGHT + "How to use this program:",
-        Fore.RESET + Style.BRIGHT + "- Clone the repo: " + Fore.GREEN + "git clone absfdfmefomem",
+        Fore.RESET + Style.BRIGHT + "- Clone the repo: " + Fore.GREEN + "git clone https://github.com/Sown0205/Spryzen.git",
         Fore.RESET + Style.BRIGHT + "- Install required libraries: " + Fore.GREEN + "bash install.sh",
-        Fore.RESET + Style.BRIGHT + "- Run it: " + Fore.GREEN + "sudo python spryzen.py",
+        Fore.RESET + Style.BRIGHT + "- Run it: " + Fore.GREEN + "python spryzen.py",
         "",
         Fore.YELLOW + Style.BRIGHT + "[!] Caution: Scanner tool in this program needs root access to run or it will raise PermissionError",
         Fore.GREEN + Style.BRIGHT + "[!] Solution: Use root access to run the program: " + Fore.GREEN + "sudo python spryzen.py",
         "",
-        Fore.YELLOW + "Other information:",
+        Fore.YELLOW + Style.BRIGHT + "Other information:",
         Fore.RESET + Style.BRIGHT +  "- This is a personal project for learning programming and cybersecurity.",
         "- It's not meant for real-world security use.",
         "- But you can play with it to understand how things work!",
-        "- It's open source. Pull requests are welcome! Feel free to contribute0",
+        "- It's open source. Pull requests are welcome! Feel free to contribute",
         "",
-        Fore.YELLOW + "Contact information:",
+        Fore.YELLOW + Style.BRIGHT + "Contact information:",
         Fore.RESET + "- Gmail: buithaison13579@gmail.com",
         "- Facebook: https://www.facebook.com/son.bui.5730",
         "- GitHub: https://github.com/Sown0205",
