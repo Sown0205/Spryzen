@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+# Make spryzen.py has a proper shebang at the top so it wont be misunderstood as a bash file
 # Required libraries
 import sys
 from time import sleep

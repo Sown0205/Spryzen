@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 #Spryzen installer script
 # This is the script to setup Spryzen on a newly Linux box. You can install all the requirements manually,
 # Or you can run this bash file: bash install.sh
