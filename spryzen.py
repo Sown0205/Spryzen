@@ -16,7 +16,7 @@ def main():
     utils.show_banner() #Show banner
     utils.show_menu() #Show menu list
     while True:
-        user_choice = input(Fore.CYAN + Style.BRIGHT + "Select your choice [1-5] to use the program or choose 0 to quit: ")
+        user_choice = input(Fore.RESET + Style.BRIGHT + "Select your choice [1-5] to use the program or choose 0 to quit: ")
         print(Fore.RESET) #Reset the text color
         
         if user_choice == "1":

@@ -54,7 +54,7 @@ def is_valid_ip(ip):
 def run():
     print(Fore.CYAN + Style.BRIGHT + "\n----------------------------------Using IP Tracer Tool--------------------------------------------\n")
     while True:
-        ip_add = input(Fore.CYAN + Style.BRIGHT + "Enter an IP address (or leave blank for your own IP): ").strip()
+        ip_add = input(Fore.CYAN + Style.BRIGHT + "Enter an IP address (leave blank for your own IP): ").strip()
         if not ip_add:
             ip_add = ""
             trace_ip(ip_add)
