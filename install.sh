@@ -29,7 +29,7 @@ elif command -v apk &> /dev/null; then
     PKG_MANAGER="apk"
     INSTALL_CMD="apk add"
 else
-    echo "${RED}[!] Caution ! No supported package manager found. Exiting..."
+    echo -e "${RED}[!] Caution ! No supported package manager found. Exiting..."
     exit 1
 fi
 
@@ -71,24 +71,24 @@ esac
 # Install Python3 and pip if not found
 echo "${GREEN}[+] Checking Python installation...${NC}"
 if ! command -v python3 &> /dev/null; then
-    echo "${YELLOW}[!] Python3 not found. Installing..."
+    echo -e "${YELLOW}[!] Python3 not found. Installing..."
     $INSTALL_CMD python3
 else 
-    echo "${GREEN}[+] Python3 already installed."
+    echo -e "${GREEN}[+] Python3 already installed."
 fi
 
 if ! command -v pip3 &> /dev/null; then
-    echo "${YELLOW}[!] pip3 not found. Installing...${NC}"
+    echo -e "${YELLOW}[!] pip3 not found. Installing...${NC}"
     $INSTALL_CMD python3-pip
 else 
-    echo "${GREEN}[+] pip3 already installed."
+    echo -e "${GREEN}[+] pip3 already installed."
 fi
 
 # Install git and curl
 $INSTALL_CMD git curl
 
 #Installing required Python libraries for the program
-echo "${YELLOW}[+] Installing required Python libraries...${NC}"
+echo -e "${YELLOW}[+] Installing required Python libraries...${NC}"
 pip install --upgrade pip
 pip install argparse cryptography colorama requests scapy
 
@@ -96,8 +96,8 @@ pip install argparse cryptography colorama requests scapy
 sudo chmod +x spryzen.py
 
 #Complete
-echo "${GREEN}[+] Installation complete !"
-echo "You can now run the program using this command: spryzen.py or sudo spryzen.py"
+echo -e "${GREEN}[+] Installation complete !"
+echo "You can now run the program using this command: ${YELLOW}spryzen.py${NC} or ${YELLOW}sudo spryzen.py${NC}"
 
 
 
