@@ -4,17 +4,25 @@
 # However with this script, user can just run spryzen or sudo spryzen to execute the program, 
 # and they can run the tool in anywhere rather than in just Spryzen folder
 
-echo "[+] Creating spryzen command shortcut..."
+#Color Codes for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+BOLD='\033[1m'
+NC='\033[0m' # No Color (reset)
+
+echo "${GREEN}[+] Creating spryzen command shortcut...${NC}"
 
 #Requires root access to run
 if [ "$EUID" -ne 0 ]; then
-    echo -e "${RED}[!] Please run as root: sudo ./execute.sh${NC}"
+    echo -e "${RED}[!]Error: Permission denied ! Please run as root: sudo ./execute.sh${NC}"
     exit 1      
 else
     ln -sf "$(pwd)/spryzen.py" /usr/local/bin/spryzen  
 fi
 
-echo "Now you can run the tool in anywhere with this command: spryzen - or sudo spryzen"
+echo "Now you can run the tool in anywhere with this command: ${YELLOW}spryzen${NC} - or ${YELLOW}sudo spryzen${NC}"
 
 
 
