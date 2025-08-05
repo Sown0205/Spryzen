@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 #Spryzen installer script
 # This is the script to setup Spryzen on a newly Linux box. You can install all the requirements manually,
 # Or you can run this bash file: bash install.sh
@@ -84,8 +86,8 @@ else
     echo -e "${GREEN}[+] pip3 already installed."
 fi
 
-# Install git and curl
-$INSTALL_CMD git curl
+# Install git and curl - this is optional as the user already had to install git if they want to clone this repo
+# $INSTALL_CMD git curl
 
 #Installing required Python libraries for the program
 echo -e "${YELLOW}[+] Installing required Python libraries...${NC}"

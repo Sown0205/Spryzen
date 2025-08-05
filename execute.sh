@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # this script is used to set up shortcut symbolic link to the program
 # For example, to run the program, the command will be 
 # python spryzen.py or sudo python spryzen.py
@@ -13,6 +15,9 @@ BOLD='\033[1m'
 NC='\033[0m' # No Color (reset)
 
 echo -e "${GREEN}[+] Creating spryzen command shortcut...${NC}"
+
+#Make sryzen.py executable first
+sudo chmod +x spryzen.py
 
 #Requires root access to run
 if [ "$EUID" -ne 0 ]; then
