@@ -16,6 +16,7 @@ from Modules import updater
 
 # Main function
 def main():
+    # Opens the program in a clear space
     os.system('cls' if os.name == 'nt' else 'clear')
     #Checking for updates
     updater.check_update()

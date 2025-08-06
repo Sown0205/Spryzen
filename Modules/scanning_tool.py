@@ -57,8 +57,9 @@ def scan_ports(target, ports):
 
 #Execute function
 def run():
-    print(Fore.CYAN + Style.BRIGHT + "----------------------------------Using Port Scanning Tool--------------------------------------------\n")
-    
+    print(Fore.CYAN + Style.BRIGHT + "[✓] Booting Scanning Tool...\n")
+    time.sleep(0.5)
+     
     while True:
         ip_address = input(Fore.RESET + Style.BRIGHT + "Enter your IP address here: ")
 

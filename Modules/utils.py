@@ -38,6 +38,7 @@ this program and how to use it""" + "\n")
     print(Fore.YELLOW + Style.BRIGHT + f"[3] Scanning Tool (Scanning for open ports)" )
     print(Fore.YELLOW + Style.BRIGHT + f"[4] About us (info about this program)" )
     print(Fore.YELLOW + Style.BRIGHT + f"[0] Quit (Exit the program)\n" )
+    print(Fore.CYAN + Style.BRIGHT + "------------------------------------------------------------------------------")
 
 #Display goodbye message if users quit the program
 def goodbye():

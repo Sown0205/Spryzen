@@ -1,5 +1,6 @@
 from colorama import Fore, Style
 from time import sleep
+import os
 
 #import utils module
 from Modules import utils

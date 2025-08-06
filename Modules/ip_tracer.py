@@ -52,7 +52,9 @@ def is_valid_ip(ip):
 
 #Execute function
 def run():
-    print(Fore.CYAN + Style.BRIGHT + "\n----------------------------------Using IP Tracer Tool--------------------------------------------\n")
+    print(Fore.CYAN + Style.BRIGHT + "[✓] Booting IP Tracer Tool...\n")
+    sleep(0.5)
+    
     while True:
         ip_add = input(Fore.CYAN + Style.BRIGHT + "Enter an IP address (leave blank for your own IP): ").strip()
         if not ip_add:

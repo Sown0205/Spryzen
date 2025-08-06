@@ -156,8 +156,8 @@ def decrypt_file():
 
 # Execute function
 def run():
-    print(Fore.CYAN + Style.BRIGHT + "\n----------------------------------Using Cryptography Tool--------------------------------------------")
-    
+    print(Fore.CYAN + Style.BRIGHT + "[✓] Booting Cryptography Tool...")
+    sleep(0.5)
     while True:
         choice = input(Fore.CYAN + Style.BRIGHT + "\nChoose a crytography mode (encrypt or decrypt) or type quit to exit the program: ").lower().strip()
         if choice == "encrypt":
