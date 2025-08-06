@@ -25,6 +25,7 @@ def main():
     while True:
         user_choice = input(Fore.RESET + Style.BRIGHT + "Select your choice [1-4] to use the program or choose 0 to quit: ")
         print(Fore.RESET) #Reset the text color
+        utils.clear_output_area()
         
         if user_choice == "1":
             crypto_tool.run() # Run the first tool

@@ -53,7 +53,8 @@ def is_valid_ip(ip):
 #Execute function
 def run():
     print(Fore.CYAN + Style.BRIGHT + "[✓] Booting IP Tracer Tool...\n")
-    sleep(0.5)
+    sleep(1.5)
+    utils.clear_output_area()
     
     while True:
         ip_add = input(Fore.CYAN + Style.BRIGHT + "Enter an IP address (leave blank for your own IP): ").strip()
@@ -71,14 +72,21 @@ def run():
         prompt = input(Fore.CYAN + Style.BRIGHT + "Do you want to continue ? (yes/no): ").lower().strip()
     
         if prompt == "yes":
+            sleep(1.5)
+            utils.clear_output_area()
             continue
+
         elif prompt == "no":
-            print(Fore.CYAN + Style.BRIGHT + "Quitting...")
-            sleep(0.5)
+            print(Fore.RED + Style.BRIGHT + "Quitting...")
+            sleep(1.5)
+            utils.clear_output_area()
             utils.show_menu()
             break
+
         else:
-            print(Fore.YELLOW + Style.BRIGHT + "Invalid choice ! Choose 'yes' or 'no'")
+            print(Fore.YELLOW + Style.BRIGHT + "Invalid choice ! Exitting the program")
+            sleep(1.5)
+            utils.clear_output_area()
             utils.show_menu()
             break
             

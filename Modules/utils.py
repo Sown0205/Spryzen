@@ -23,16 +23,16 @@ def show_banner():
                                          
            Spryzen - A simple cyber toolkit written in Python
                       Author: {Fore.YELLOW}Sown0205{Fore.CYAN}
-                      Version: {Fore.YELLOW}v.1.1{Fore.CYAN}
+                      Version: {Fore.YELLOW}v.1.1{Fore.CYAN}\n
+------------------------------------------------------------------------------
 """
-    print(Fore.CYAN + Style.BRIGHT + banner)
-    print(Fore.RESET)
+    print(Fore.CYAN + Style.BRIGHT + banner, end="")
+    print(Fore.RESET, end="")
 
 #Show menu 
 def show_menu():
-    print(Fore.CYAN + Style.BRIGHT + "------------------------------------------------------------------------------")
-    print(Fore.RESET + Style.BRIGHT + r"""Use a tool from the menu list below, or choose 'About us' to see details about
-this program and how to use it""" + "\n")
+    print(Fore.RESET + Style.BRIGHT + r"""Use a tool from the menu list below, or choose 'About us' to see details 
+about this program and how to use it""" + "\n")
     print(Fore.YELLOW + Style.BRIGHT + f"[1] Crypto tool (Encryption/Decryption)" )
     print(Fore.YELLOW + Style.BRIGHT + f"[2] IP Tracer tool (trace IP addresses)" )
     print(Fore.YELLOW + Style.BRIGHT + f"[3] Scanning Tool (Scanning for open ports)" )
@@ -45,5 +45,9 @@ def goodbye():
     print(Fore.RED + Style.BRIGHT + "Quitting...\n")
     sleep(2)
     print(Fore.CYAN + Style.BRIGHT + "Goodbye :) !")
-    print(Fore.CYAN + Style.BRIGHT + "------------------------------------------------------------------------------")
     sys.exit()
+
+# Function to clear only the dynamic output area
+def clear_output_area():
+    print("\033[18;0H\033[J", end="")  # Move to line 18 and clear down
+

@@ -8,6 +8,15 @@ from Modules import utils
 # Main funtion
 def run():
     lines = [
+        Fore.YELLOW + Style.BRIGHT + "***[!] What's new:***",
+        Fore.RESET + Style.BRIGHT + "The new version v.1.1 has some new features:",
+        Fore.RESET + Style.BRIGHT + "1. Version checker: If the program is outdated, it will prompt the user to update to the current version",
+        Fore.RESET + Style.BRIGHT + "2. Auto-update function: The program will also updates the current version automatically for the user without manual git commands",
+        "",
+        Fore.YELLOW + Style.BRIGHT + "[!] Caution: This feature is on testing and may cause some bugs. We recommend you not use this feature until later versions",
+        "",
+        Fore.RESET + Style.BRIGHT + "3. Enhanced UI display: The banner and menu will be static, only the output will be dynamically displayed",
+        "",
         Fore.YELLOW + Style.BRIGHT + "About this program:",
         Fore.RESET + Style.BRIGHT + "- This program has 3 main tools:",
         Fore.RESET + Style.BRIGHT + "1. Cryptography Tool - encrypt or decrypt a file with AES + password",
@@ -37,8 +46,15 @@ def run():
     ]
                   
     sleep(0.7) # add a little delay before displaying the msg
-    utils.show_banner() # Show the banner first
     for line in lines:
         print(line) # Show about us info
-    #Show again the menu
+    
+    #Prompt the user to get back to the menu
+    input(Fore.RESET + Style.BRIGHT + "\nPress any word to get back to the menu: ")
+    # This is tricky - I haven't found any solution to clear the about us section without touching the banner and the menu
+    # So the best way to do is to clear them all and display the banner and menu again :)
+    os.system('cls' if os.name == 'nt' else 'clear')
+    sleep(2)
+    utils.show_banner()
     utils.show_menu()
+

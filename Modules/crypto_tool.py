@@ -20,20 +20,27 @@ def generate_key():
 
 # Function to encrypt the files by using the AES key
 def encrypt_file():
+    sleep(0.5)
+    utils.clear_output_area()
     file_path = input("Enter the file that you want to encrypt: \n")
     
     # Handle unknown files
     if not os.path.exists(file_path):
         print(Fore.RED + "File not found!")
+        sleep(1.5)
+        utils.clear_output_area()
         return
     
     #Prompt the user if they really want to encrypt the file
     else:
-        prompt = input(Fore.YELLOW + "Do you really want to encrypt this file (yes/no ?): ")
+        utils.clear_output_area()
+        prompt = input(Fore.YELLOW + Style.BRIGHT + "Do you really want to encrypt this file (yes/no ?): ")
         
         #if no - return
         if prompt == "no" or prompt == "n":
-            print(Fore.YELLOW + "Make sure that you really want to encrypt this file. If the decryption key is lost, decryption will be impossible")
+            print(Fore.YELLOW + Style.BRIGHT + "Make sure that you really want to encrypt this file. If the decryption key is lost, decryption will be impossible")
+            sleep(2)
+            utils.clear_output_area()
             return
         
         #if yes - continue
@@ -58,14 +65,14 @@ def encrypt_file():
             f_output.close()
             
             os.remove(file_path) #remove the orginal filepath to erase track
-            print(Fore.GREEN + f"\nYour file {file_path} has been encrypted and the original content has been deleted")
-            print(Fore.GREEN + f"Your encrypted file: {encrypted_file_path}\n")
+            print(Fore.GREEN + Style.BRIGHT + f"\nYour file {file_path} has been encrypted and the original content has been deleted")
+            print(Fore.GREEN + Style.BRIGHT + f"Your encrypted file: {encrypted_file_path}\n")
             print(Fore.GREEN + Style.BRIGHT + f"Encryption key (THIS IS IMPORTANT IF YOU WANT TO DECRYPT THE FILE ! SAVE IT): {key.hex()} \n")
 
             # Save the key into a file if users want to
             # Make a loop to validate user's choices
             while True:
-                    save_option = input(Fore.YELLOW + "Do you want to save the key to a file? (yes/no): ").strip().lower()
+                    save_option = input(Fore.YELLOW + Style.BRIGHT + "Do you want to save the key to a file? (yes/no): ").strip().lower()
 
                     #If choose 'yes' -> save the key to a file then break the loop
                     if save_option == "yes" or save_option == "y":
@@ -74,48 +81,67 @@ def encrypt_file():
                             key_file = input("Enter the filename to save the key: ").strip()
                             #Check file path valid or not
                             if ".txt" not in key_file:
-                                print(Fore.RED + "\nInvalid key file path ! The file path should have '.txt' extension")
-                                print(Fore.RED + "Example: 'key.txt', 'secure.txt', 'lock.txt',...\n")
+                                print(Fore.RED + Style.BRIGHT + "\nInvalid key file path ! The file path should have '.txt' extension")
+                                print(Fore.RED + Style.BRIGHT + "Example: 'key.txt', 'secure.txt', 'lock.txt',...\n")
+                                sleep(2)
+                                utils.clear_output_area()
                                 continue
                             
                             #The key file path should not be the same as the original file path
                             elif key_file == file_path:
                                 print(Fore.RED + "The file path should not be the same as the original file path. Try a different name")
+                                sleep(1.5)
+                                utils.clear_output_area()
                                 continue
                             else:
                                 with open(key_file, "w") as f:
                                     f.write(key.hex())
                                 print(Fore.GREEN + f"Key saved to {key_file}")
+                                sleep(3)
+                                utils.clear_output_area()
                                 break
                         break
 
                     #if choose 'no' -> break the loop (nothing to do more)
                     elif save_option == "no" or save_option == "n":
+                        print(Fore.YELLOW + Style.BRIGHT + "It is recommended that you should save the key to a file. If you lost the key, decryption is impossible")
+                        sleep(1)
+                        utils.clear_output_area()
                         break
 
                     #Else -> continue the loop to make sure users choose the right command
                     else: 
                         print(Fore.RED + "\nInvalid command. Choose 'yes' ('y') or 'no' ('n') \n")
+                        sleep(1)
+                        utils.clear_output_area()
                         continue
 
         # if other inputs are made - display invalid command and return
         else: 
             print(Fore.RED + "\nInvalid command ! Choose 'yes' ('y') or 'no' ('n')")
+            sleep(1)
+            utils.clear_output_area()
             return
 
 # Function to decrypt the file with the provided key
 def decrypt_file():
+    sleep(0.5)
+    utils.clear_output_area()
     encrypted_file_path = input("Enter the encrypted file that you want to decrypt: ")
 
     #Handle unknown file paths
     if not os.path.exists(encrypted_file_path):
         print(Fore.RED + "File not found!")
+        sleep(1.5)
+        utils.clear_output_area()
         return
     
     # Handle invalid encrypted file
     file_extension = ".enc"
     if not encrypted_file_path.endswith(file_extension):
         print(Fore.RED + "Error: File is not a valid encrypted file.")
+        sleep(1.5)
+        utils.clear_output_area()
         return
     
     key_hex = input("Enter the decryption key: \n")
@@ -125,6 +151,8 @@ def decrypt_file():
         key = bytes.fromhex(key_hex)
     except ValueError:
         print(Fore.RED + "Invalid key format!")
+        sleep(1.5)
+        utils.clear_output_area()
         return
     
     with open(encrypted_file_path, "rb") as f:
@@ -149,17 +177,21 @@ def decrypt_file():
         os.remove(encrypted_file_path) # Remove the encrypted file path as the file has been decrypted
         print(Fore.GREEN + f"Your file {encrypted_file_path} has been decrypted")
         print(Fore.GREEN + f"Decrypted file: {decrypted_file_path}")
+        print(Fore.YELLOW + Style.BRIGHT + "Exitting...")
+        sleep(4)
+        utils.clear_output_area()
 
     # Error handling
     except Exception as e:
-        print(Fore.RED + "Decryption failed: Invalid key!")
+        print(Fore.RED + Style.BRIGHT + "Decryption failed: Invalid key!")
 
 # Execute function
 def run():
     print(Fore.CYAN + Style.BRIGHT + "[✓] Booting Cryptography Tool...")
-    sleep(0.5)
+    sleep(1)
+    utils.clear_output_area()
     while True:
-        choice = input(Fore.CYAN + Style.BRIGHT + "\nChoose a crytography mode (encrypt or decrypt) or type quit to exit the program: ").lower().strip()
+        choice = input(Fore.CYAN + Style.BRIGHT + "Choose a crytography mode (encrypt or decrypt) or type quit to exit the program: ").lower().strip()
         if choice == "encrypt":
             encrypt_file()
 
@@ -169,11 +201,13 @@ def run():
         elif choice == "quit":
             print(Fore.RED + Style.BRIGHT + "Quitting...\n")
             sleep(1)
+            utils.clear_output_area()
             utils.show_menu()
             break
 
         else:
             print(Fore.RED + Style.BRIGHT + "Invalid command. Choose 'encrypt/decrypt' or 'quit'")
+            utils.clear_output_area()
             continue
         
     
