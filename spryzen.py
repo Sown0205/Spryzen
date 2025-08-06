@@ -12,9 +12,12 @@ from Modules import ip_tracer
 from Modules import scanning_tool
 from Modules import about_us
 from Modules import utils
+from Modules import updater
 
 # Main function
 def main():
+    #Checking for updates
+    updater.check_update()
     utils.show_banner() #Show banner
     utils.show_menu() #Show menu list
     while True:

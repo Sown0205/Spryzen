@@ -35,7 +35,7 @@ def updater():
 #Checking update function
 def check_update():
     local_version = get_local_version()
-    remote_url = "https://raw.githubusercontent.com/Sown020/Spryzen/main/version.txt"
+    remote_url = "https://raw.githubusercontent.com/Sown0205/Spryzen/v.1.1/version.txt"
     remote_version = get_remote_version(remote_url)
       
     if not remote_version:
@@ -56,7 +56,7 @@ def check_update():
             print(Fore.YELLOW + Style.BRIGHT + "It is recommended that you update the program to the latest version")
 
         else:
-            print("Invalid command")
+            print(Fore.RED + Style.BRIGHT + "Invalid command")
 
     else:
         print(Fore.CYAN + Style.BRIGHT + "Your Spryzen is on the latest version")
