@@ -1,5 +1,5 @@
 #import colorama
-from colorama import Fore, Style, init
+from colorama import Fore, Style, init, Cursor
 import sys
 from time import sleep
 init(autoreset=True)
@@ -8,7 +8,7 @@ init(autoreset=True)
 
 #Showing the banner
 def show_banner():
-    banner = r"""
+    banner = f"""
 
   ██████  ██▓███   ██▀███ ▓██   ██▓▒███████▒▓█████  ███▄    █ 
 ▒██    ▒ ▓██░  ██▒▓██ ▒ ██▒▒██  ██▒▒ ▒ ▒ ▄▀░▓█   ▀  ██ ▀█   █ 
@@ -21,23 +21,23 @@ def show_banner():
       ░              ░     ░ ░       ░ ░       ░  ░         ░ 
                            ░ ░     ░            
                                          
-        Spryzen - A simple cyber toolkit written in Python
-                    Author: Sown0205
-                    Version: v.1.1
+           Spryzen - A simple cyber toolkit written in Python
+                      Author: {Fore.YELLOW}Sown0205{Fore.CYAN}
+                      Version: {Fore.YELLOW}v.1.1{Fore.CYAN}
 """
     print(Fore.CYAN + Style.BRIGHT + banner)
-
+    print(Fore.RESET)
 
 #Show menu 
 def show_menu():
-    print(Fore.CYAN + Style.BRIGHT + "\n------------------------------------------------------------------------------")
+    print(Fore.CYAN + Style.BRIGHT + "------------------------------------------------------------------------------")
     print(Fore.RESET + Style.BRIGHT + r"""Use a tool from the menu list below, or choose 'About us' to see details about
 this program and how to use it""" + "\n")
-    print(Fore.YELLOW + Style.BRIGHT + f"1. Crypto tool (Encryption/Decryption)" )
-    print(Fore.YELLOW + Style.BRIGHT + f"2. IP Tracer tool (trace IP addresses)" )
-    print(Fore.YELLOW + Style.BRIGHT + f"3. Scanning Tool (Scanning for open ports)" )
-    print(Fore.YELLOW + Style.BRIGHT + f"4. About us (info about this program)" )
-    print(Fore.YELLOW + Style.BRIGHT + f"0. Quit (Exit the program)\n" )
+    print(Fore.YELLOW + Style.BRIGHT + f"[1] Crypto tool (Encryption/Decryption)" )
+    print(Fore.YELLOW + Style.BRIGHT + f"[2] IP Tracer tool (trace IP addresses)" )
+    print(Fore.YELLOW + Style.BRIGHT + f"[3] Scanning Tool (Scanning for open ports)" )
+    print(Fore.YELLOW + Style.BRIGHT + f"[4] About us (info about this program)" )
+    print(Fore.YELLOW + Style.BRIGHT + f"[0] Quit (Exit the program)\n" )
 
 #Display goodbye message if users quit the program
 def goodbye():
