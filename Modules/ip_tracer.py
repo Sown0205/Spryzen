@@ -4,6 +4,7 @@ from colorama import Fore, Style, init
 init(autoreset=True)
 import re
 from time import sleep
+import os
 
 #import utils - using reusable code 
 from Modules import utils
@@ -72,8 +73,10 @@ def run():
         prompt = input(Fore.CYAN + Style.BRIGHT + "Do you want to continue ? (yes/no): ").lower().strip()
     
         if prompt == "yes":
-            sleep(1.5)
-            utils.clear_output_area()
+            sleep(1)
+            #Hard reset
+            os.system('cls' if os.name == 'nt' else 'clear')
+            utils.show_banner()
             continue
 
         elif prompt == "no":

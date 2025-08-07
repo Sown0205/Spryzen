@@ -45,7 +45,7 @@ def syn_scan(target, port, results):
                         results.append(port)
                     elif response[TCP].flags == 0x14:  # RST-ACK received
                         print(Fore.RED + Style.BRIGHT + f"[-] Port {port} is CLOSED")
-                        
+
                     results.append(port)
 
     except Exception as e:
@@ -142,7 +142,7 @@ def run():
                     time.sleep(1.5)
                     utils.clear_output_area()
                     print(Fore.CYAN + Style.BRIGHT + "Specify your port range here. Caution: start port and end port must be seperated by a hyphen (-)")
-                    print("Example: 1-1000 or 100-500")
+                    print("Example: 1-1000 or 100-500\n")
 
                     port_range = input(Fore.CYAN + Style.BRIGHT + "Enter your port range: ")
 
