@@ -8,10 +8,8 @@ Author: Sown0205
 
 Spryzen is a simple cyber toolkit contains 3 main tools: A cryptography tool, an IP tracer tool, and a scanning tool.
 
-```md
 ![UI](snapshots/image.png)
 Image 1: Spryzen UI
-```
 
 [1] The cryptography tool can be used to encrypt and decrypt file with AES-256-CBC encryption method that generates a random 32-bit encryption key.
 
