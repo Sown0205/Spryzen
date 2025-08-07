@@ -1,15 +1,17 @@
-#Spryzen
+# Spryzen
 
 A simple cyber toolkit written in Python
 
 Author: Sown0205
 
-##About this program
+## About this program
 
 Spryzen is a simple cyber toolkit contains 3 main tools: A cryptography tool, an IP tracer tool, and a scanning tool.
 
-![alt text](image.png)
+```md
+![UI](snapshots/image.png)
 Image 1: Spryzen UI
+```
 
 [1] The cryptography tool can be used to encrypt and decrypt file with AES-256-CBC encryption method that generates a random 32-bit encryption key.
 
@@ -21,10 +23,10 @@ Image 1: Spryzen UI
 
 If they want to quit the program, select [0] to exit
 
-![alt text](image-1.png)
+![UI](snapshots/image-1.png)
 Image 2: Exitting Spryzen
 
-##How to use
+## How to use
 
 To use this toolkit, users can clone the git repo for this toolkit
 
@@ -75,9 +77,9 @@ then you can run this
 sudo spryzen
 ```
 
-##Technical details
+## Technical details
 
-###1. Cryptography tool
+### 1. Cryptography tool
 
 - Use built-in Python library named cryptography
 
@@ -89,7 +91,7 @@ sudo spryzen
 
 - The tool has file validation, input validation, key validation, and many more. 
 
-###2. IP Tracer tool
+### 2. IP Tracer tool
 - A simple ip tracer tool that use requests library from Python to send requests to IPinfo API.
 
 - Users will prompt their target IP address, the progam then will send a requests to API to return data for that IP address in json format
@@ -98,7 +100,7 @@ sudo spryzen
 
 - Else (status code != 200), it will simply return an error
 
-###3. Scanning tool
+### 3. Scanning tool
 - Use scapy library to manipulate network packets
 
 - Users will prompt IP address, choose to scan port/ports (e.g 22,80,445) or port range (e.g 1-1000), enter their target port/ports/range.
@@ -115,12 +117,12 @@ sudo spryzen
 
 - To make things faster, the scan process also has a multi-threading function that can be used to scan multiple ports at time
 
-###4. Others
+### 4. Others
 - An updater function that compare the program's version and the current version ob Github. If the version does not match, the program needs an update. And if users wants to update, Spryzen will do it automatically
 
 - <span style="color:yellow">Caution: This features is still in development and it can cause some bugs. It is recommended that you shouldn't use this feature right now until later version
 
-##Other informations
+## Other informations
 
 This is a personal project for learning programming and cybersecurity
 
@@ -130,7 +132,7 @@ But you can play with it to understand how things work!
 
 It's open source. Pull requests are welcome! Feel free to contribute
 
-##Future updates
+## Future updates
 Spryzen current version is v.1.1. In our next version update, v.1.2, there will be some new features such as:
 
 + Enhancing UI display with Python rich library (our UI code is pretty messy and not efficient enough)
@@ -138,7 +140,7 @@ Spryzen current version is v.1.1. In our next version update, v.1.2, there will 
 + Use ThreadPoolExecution for scanning program to boost speed rather than traditional multi-threading
 
 
-##Contact information
+## Contact information
 - Gmail: buithaison13579@gmail.com
 - Facebook: https://www.facebook.com/son.bui.5730
 - GitHub: https://github.com/Sown0205
