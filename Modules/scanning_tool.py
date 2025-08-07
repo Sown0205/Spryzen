@@ -7,6 +7,7 @@ from scapy.all import IP, TCP, sr1, send
 from colorama import Fore, Style, init
 import re
 from datetime import datetime
+import os
 init(autoreset=True)
 
 #Import utils modulde to use reusable code
@@ -37,12 +38,14 @@ def syn_scan(target, port, results):
 
         if response:
             if response.haslayer(TCP):
-                if response[TCP].flags == 0x12:  # SYN-ACK received
-                    print(Fore.GREEN + Style.BRIGHT + f"[+] Port {port} is OPEN")
-                    send(IP(dst=target) / TCP(dport=port, flags="R"), verbose=0)  # Send RST to close
-                    results.append(port)
-                elif response[TCP].flags == 0x14:  # RST-ACK received
-                    print(Fore.RED + Style.BRIGHT + f"[-] Port {port} is CLOSED")
+                with scan_error_lock:
+                    if response[TCP].flags == 0x12:  # SYN-ACK received
+                        print(Fore.GREEN + Style.BRIGHT + f"[+] Port {port} is OPEN")
+                        send(IP(dst=target) / TCP(dport=port, flags="R"), verbose=0)  # Send RST to close
+                        results.append(port)
+                    elif response[TCP].flags == 0x14:  # RST-ACK received
+                        print(Fore.RED + Style.BRIGHT + f"[-] Port {port} is CLOSED")
+                        
                     results.append(port)
 
     except Exception as e:
@@ -202,8 +205,10 @@ def run():
 
                 elif user_prompt == "no":
                     print(Fore.RED + Style.BRIGHT + "Quitting...\n")
-                    time.sleep(1.5)
-                    utils.clear_output_area()
+                    time.sleep(1)
+                    #Clear the whole UI then display again
+                    os.system('cls' if os.name == 'nt' else 'clear')
+                    utils.show_banner()
                     utils.show_menu()
                     break
                 # If invalid choice, exit the tool anyway but display a warning msg
