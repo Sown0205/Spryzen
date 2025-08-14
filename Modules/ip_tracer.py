@@ -19,8 +19,7 @@ def trace_ip(ip_address):
         #If receive response (status code 200 OK), display its contents
         if response.status_code == 200:
             ip_data = response.json()
-            print(Fore.CYAN + Style.BRIGHT + f"IP address information for: " + Fore.YELLOW + Style.BRIGHT + f"{ip_data.get('ip', 'N/A')}")
-            print(Fore.CYAN + f"-" * 40)
+            print(Fore.WHITE + Style.BRIGHT + f"IP address information for: " + Fore.YELLOW + Style.BRIGHT + f"{ip_data.get('ip', 'N/A')}\n")
             print(Fore.CYAN + f"IP address: " + Fore.YELLOW + Style.BRIGHT + f"{ip_data.get('ip', 'N/A')}")
             print(Fore.CYAN + f"Hostname: " + Fore.YELLOW + Style.BRIGHT + f"{ip_data.get('hostname', 'N/A')}")
             print(Fore.CYAN + f"Country: " + Fore.YELLOW + Style.BRIGHT + f"{ip_data.get('country', 'N/A')}")
@@ -29,20 +28,19 @@ def trace_ip(ip_address):
             print(Fore.CYAN + f"Location (Latitude and Longnitude): " + Fore.YELLOW + Style.BRIGHT + f"{ip_data.get('loc', 'N/A')}")
             print(Fore.CYAN + f"Organizations: " + Fore.YELLOW + Style.BRIGHT + f"{ip_data.get('org', 'N/A')}")
             print(Fore.CYAN + f"Postal: " + Fore.YELLOW + Style.BRIGHT + f"{ip_data.get('postal', 'N/A')}")
-            print(Fore.CYAN + f"Timezone: " + Fore.YELLOW + Style.BRIGHT + f"{ip_data.get('timezone', 'N/A')}")
-            print(Fore.CYAN + f"-" * 40)
+            print(Fore.CYAN + f"Timezone: " + Fore.YELLOW + Style.BRIGHT + f"{ip_data.get('timezone', 'N/A')}\n")
 
         # If not recevice response (status code != 200), display error
         else:
             error = response.json()
             print(Fore.RED + f"Cannot find info for IP address {ip_address}. Response status code: {response.status_code}")
             print(Fore.RED + Style.BRIGHT + f"Error: {error.get('title')}")
-            print(Fore.RED + Style.BRIGHT + f"{error.get('message')}")
+            print(Fore.RED + Style.BRIGHT + f"{error.get('message')}\n")
 
     # Exceptions
     except requests.exceptions.RequestException as e:
         print(Fore.RED + Style.BRIGHT + "Request failed !")
-        print(Fore.RED + Style.BRIGHT + f"Error: {e}")
+        print(Fore.RED + Style.BRIGHT + f"Error: {e}\n")
 
 #Validate IP address
 def is_valid_ip(ip):
@@ -51,6 +49,12 @@ def is_valid_ip(ip):
        return all(0 <= int(octet) <= 255 for octet in ip.split("."))
     return False
 
+#New function, hard reset to fix UI display bugs
+def reset():
+    sleep(1.5)
+    os.system('cls' if os.name == 'nt' else 'clear')
+    utils.show_banner()
+
 #Execute function
 def run():
     print(Fore.CYAN + Style.BRIGHT + "[✓] Booting IP Tracer Tool...\n")
@@ -58,31 +62,31 @@ def run():
     utils.clear_output_area()
     
     while True:
-        ip_add = input(Fore.CYAN + Style.BRIGHT + "Enter an IP address (leave blank for your own IP): ").strip()
+        ip_add = input(Fore.RESET + Style.BRIGHT + "Enter an IP address (leave blank for your own IP): ").strip()
         if not ip_add:
+            sleep(0.5)
+            utils.clear_output_area()
             ip_add = ""
             trace_ip(ip_add)
         
         else:
             if is_valid_ip(ip_add):
+                sleep(0.5)
+                utils.clear_output_area()
                 trace_ip(ip_add)
             else:
                 print(Fore.RED + Style.BRIGHT + "Invalid IP address !")
                 break
             
-        prompt = input(Fore.CYAN + Style.BRIGHT + "Do you want to continue ? (yes/no): ").lower().strip()
+        prompt = input(Fore.RESET + Style.BRIGHT + "Do you want to continue ? (yes/no): ").lower().strip()
     
         if prompt == "yes":
-            sleep(1)
-            #Hard reset
-            os.system('cls' if os.name == 'nt' else 'clear')
-            utils.show_banner()
+            reset()
             continue
 
         elif prompt == "no":
             print(Fore.RED + Style.BRIGHT + "Quitting...")
-            sleep(1.5)
-            utils.clear_output_area()
+            reset()
             utils.show_menu()
             break
 
