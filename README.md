@@ -137,6 +137,8 @@ Spryzen current version is v.1.1. In our next version update, v.1.2, there will 
 
 + Use ThreadPoolExecution for scanning program to boost speed rather than traditional multi-threading
 
++ New tool: Password hash checker
+
 
 ## Contact information
 - Gmail: buithaison13579@gmail.com
