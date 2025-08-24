@@ -22,7 +22,7 @@ def generate_key():
 def encrypt_file():
     sleep(0.5)
     utils.clear_output_area()
-    file_path = input("Enter the file that you want to encrypt: \n")
+    file_path = input("Enter the file path that you want to encrypt: \n")
     
     # Handle unknown files
     if not os.path.exists(file_path):
@@ -127,7 +127,7 @@ def encrypt_file():
 def decrypt_file():
     sleep(0.5)
     utils.clear_output_area()
-    encrypted_file_path = input("Enter the encrypted file that you want to decrypt: ")
+    encrypted_file_path = input("Enter the encrypted file path that you want to decrypt: ")
 
     #Handle unknown file paths
     if not os.path.exists(encrypted_file_path):
@@ -191,14 +191,20 @@ def run():
     sleep(1)
     utils.clear_output_area()
     while True:
-        choice = input(Fore.CYAN + Style.BRIGHT + "Choose a crytography mode (encrypt or decrypt) or type quit to exit the program: ").lower().strip()
-        if choice == "encrypt":
+        print(Style.BRIGHT + "Choose your cryptography mode [1-2] or quit [3]\n")
+        print(Fore.YELLOW + Style.BRIGHT + "[1] Encrypt mode")
+        print(Fore.YELLOW + Style.BRIGHT + "[2] Decrypt mode")
+        print(Fore.YELLOW + Style.BRIGHT + "[3] Quit \n")
+
+        choice = input(Fore.CYAN + Style.BRIGHT + "Your choice: ").lower().strip()
+
+        if choice == "1":
             encrypt_file()
 
-        elif choice == "decrypt":
+        elif choice == "2":
             decrypt_file()
 
-        elif choice == "quit":
+        elif choice == "3":
             print(Fore.RED + Style.BRIGHT + "Quitting...\n")
             sleep(1)
             utils.clear_output_area()
@@ -206,7 +212,7 @@ def run():
             break
 
         else:
-            print(Fore.RED + Style.BRIGHT + "Invalid command. Choose 'encrypt/decrypt' or 'quit'")
+            print(Fore.RED + Style.BRIGHT + "Invalid command !")
             utils.clear_output_area()
             continue
         

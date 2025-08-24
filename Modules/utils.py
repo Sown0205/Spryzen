@@ -24,7 +24,7 @@ def show_banner():
                                          
            Spryzen - A simple cyber toolkit written in Python
                       Author: {Fore.YELLOW}Sown0205{Fore.CYAN}
-                      Version: {Fore.YELLOW}v.1.1{Fore.CYAN}\n
+                      Version: {Fore.YELLOW}v.1.2{Fore.CYAN}\n
 ------------------------------------------------------------------------------
 """
     print(Fore.CYAN + Style.BRIGHT + banner, end="")

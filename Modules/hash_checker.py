@@ -290,6 +290,7 @@ def exec():
                         prompt = input("Continue ? (yes/no): ").strip().lower()
 
                         if prompt == "yes":
+                            sleep(1)
                             utils.clear_output_area()
                             continue
                         elif prompt == "no":
@@ -313,7 +314,190 @@ def exec():
                     continue
 
         elif choice == "2":
-            pass
+            while True:
+                sleep(1)
+                utils.clear_output_area()
+                hashed_text = input(Style.BRIGHT + "Enter your hashed text here: \n")
+                # Checking for hash headers:
+                # Bcrypt header
+                if "$2b$12$" in hashed_text:
+                    print(Fore.YELLOW + Style.BRIGHT + "\nYour text was hashed in bcrypt hash")
+                    plain_text = input(Style.BRIGHT + "Enter your plain text: ")
+
+                    verify = bcrypt_verify(password=plain_text, hashed=hashed_text)
+                    if (verify):
+                        print(Fore.GREEN + Style.BRIGHT + "\n[✓] Plain text match exacts with the hashed text !")
+                        prompt = input("\nContinue ? (yes/no): ").strip().lower()
+
+                        if prompt == "yes":
+                            utils.clear_output_area()
+                            continue
+                        elif prompt == "no":
+                            utils.clear_output_area()
+                            break
+                        else: 
+                            print(Fore.RED + Style.BRIGHT + "Invalid choice !")
+                            utils.clear_output_area()
+                            break
+                    else:
+                        print(Fore.RED + Style.BRIGHT + "\n[X] Plain text does not match with the hashed text !")
+                        prompt = input("\nContinue ? (yes/no): ").strip().lower()
+
+                        if prompt == "yes":
+                            utils.clear_output_area()
+                            continue
+                        elif prompt == "no":
+                            utils.clear_output_area()
+                            break
+                        else: 
+                            print(Fore.RED + Style.BRIGHT + "Invalid choice !")
+                            utils.clear_output_area()
+                            break
+
+                #Argon2 header
+                elif "$argon2id$v=19$m=65536,t=2,p=1" in hashed_text:
+                    print(Fore.YELLOW + Style.BRIGHT + "\nYour text was hashed in argon2 hash")
+                    plain_text = input(Style.BRIGHT + "Enter your plain text: ")
+
+                    verify = argon2_verify(password=plain_text, hashed=hashed_text)
+                    if (verify):
+                        print(Fore.GREEN + Style.BRIGHT + "\n[✓] Plain text match exacts with the hashed text !")
+                        prompt = input("\nContinue ? (yes/no): ").strip().lower()
+
+                        if prompt == "yes":
+                            utils.clear_output_area()
+                            continue
+                        elif prompt == "no":
+                            utils.clear_output_area()
+                            break
+                        else: 
+                            print(Fore.RED + Style.BRIGHT + "Invalid choice !")
+                            utils.clear_output_area()
+                            break
+                    else:
+                        print(Fore.RED + Style.BRIGHT + "\n[X] Plain text does not match with the hashed text !")
+                        prompt = input("\nContinue ? (yes/no): ").strip().lower()
+
+                        if prompt == "yes":
+                            utils.clear_output_area()
+                            continue
+                        elif prompt == "no":
+                            utils.clear_output_area()
+                            break
+                        else: 
+                            print(Fore.RED + Style.BRIGHT + "Invalid choice !")
+                            utils.clear_output_area()
+                            break
+
+                #Scrypt header
+                elif "$scrypt$N=16384,r=8,p=1$" in hashed_text:
+                    print(Fore.YELLOW + Style.BRIGHT + "\nYour text was hashed in Scrypt hash")
+                    plain_text = input(Style.BRIGHT + "Enter your plain text: ")
+
+                    verify = scrypt_verify(password=plain_text, stored_hash=hashed_text)
+                    if (verify):
+                        print(Fore.GREEN + Style.BRIGHT + "\n[✓] Plain text match exacts with the hashed text !")
+                        prompt = input("\nContinue ? (yes/no): ").strip().lower()
+
+                        if prompt == "yes":
+                            utils.clear_output_area()
+                            continue
+                        elif prompt == "no":
+                            utils.clear_output_area()
+                            break
+                        else: 
+                            print(Fore.RED + Style.BRIGHT + "Invalid choice !")
+                            utils.clear_output_area()
+                            break
+                    else:
+                        print(Fore.RED + Style.BRIGHT + "\n[X] Plain text does not match with the hashed text !")
+                        prompt = input("\nContinue ? (yes/no): ").strip().lower()
+
+                        if prompt == "yes":
+                            utils.clear_output_area()
+                            continue
+                        elif prompt == "no":
+                            utils.clear_output_area()
+                            break
+                        else: 
+                            print(Fore.RED + Style.BRIGHT + "Invalid choice !")
+                            utils.clear_output_area()
+                            break
+
+                #pbkdf2 with sha-256 header
+                elif "$pbkdf2-sha256$100000$" in hashed_text:
+                    print(Fore.YELLOW + Style.BRIGHT + "\nYour text was hashed in Pbkdf2 hash with SHA-256 hash algorithm")
+                    plain_text = input(Style.BRIGHT + "Enter your plain text: ")
+
+                    verify = pbkdf2_verify(password=plain_text, stored_hash=hashed_text)
+                    if (verify):
+                        print(Fore.GREEN + Style.BRIGHT + "\n[✓] Plain text match exacts with the hashed text !")
+                        prompt = input("\nContinue ? (yes/no): ").strip().lower()
+
+                        if prompt == "yes":
+                            utils.clear_output_area()
+                            continue
+                        elif prompt == "no":
+                            utils.clear_output_area()
+                            break
+                        else: 
+                            print(Fore.RED + Style.BRIGHT + "Invalid choice !")
+                            utils.clear_output_area()
+                            break
+                    else:
+                        print(Fore.RED + Style.BRIGHT + "\n[X] Plain text does not match with the hashed text !")
+                        prompt = input("\nContinue ? (yes/no): ").strip().lower()
+
+                        if prompt == "yes":
+                            utils.clear_output_area()
+                            continue
+                        elif prompt == "no":
+                            utils.clear_output_area()
+                            break
+                        else: 
+                            print(Fore.RED + Style.BRIGHT + "Invalid choice !")
+                            utils.clear_output_area()
+                            break
+
+                #pbkdf2 with sha-512 header
+                elif "$pbkdf2-sha512$100000$" in hashed_text:
+                    print(Fore.YELLOW + Style.BRIGHT + "\nYour text was hashed in Pbkdf2 hash with SHA-512 hash algorithm")
+                    plain_text = input(Style.BRIGHT + "Enter your plain text: ")
+
+                    verify = pbkdf2_verify(password=plain_text, stored_hash=hashed_text)
+                    if (verify):
+                        print(Fore.GREEN + Style.BRIGHT + "\n[✓] Plain text match exacts with the hashed text !")
+                        prompt = input("\nContinue ? (yes/no): ").strip().lower()
+
+                        if prompt == "yes":
+                            utils.clear_output_area()
+                            continue
+                        elif prompt == "no":
+                            utils.clear_output_area()
+                            break
+                        else: 
+                            print(Fore.RED + Style.BRIGHT + "Invalid choice !")
+                            utils.clear_output_area()
+                            break
+                    else:
+                        print(Fore.RED + Style.BRIGHT + "\n[X] Plain text does not match with the hashed text !")
+                        prompt = input("\nContinue ? (yes/no): ").strip().lower()
+
+                        if prompt == "yes":
+                            utils.clear_output_area()
+                            continue
+                        elif prompt == "no":
+                            utils.clear_output_area()
+                            break
+                        else: 
+                            print(Fore.RED + Style.BRIGHT + "Invalid choice !")
+                            utils.clear_output_area()
+                            break
+
+                else:
+                    print(Fore.YELLOW + Style.BRIGHT + "Warning: The text you provide is not a hashed text, or its hash algorithm is not supported by this program")
+                    break
+
 
         elif choice == "3":
             print(Fore.RED + Style.BRIGHT + "Quitting...")

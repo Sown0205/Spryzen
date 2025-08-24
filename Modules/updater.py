@@ -28,9 +28,12 @@ def get_remote_version(url):
 def updater():
     remote_version = get_remote_version()
     print(Fore.GREEN + Style.BRIGHT + f"[*] Update to the latest version: {remote_version}")
-    subprocess.run(["git", "pull"], check=True)
-    print(Fore.GREEN + Style.BRIGHT + "[✓] Spryzen updated. Please restart the tool.")
-    exit(0)
+    try: 
+        subprocess.run(["git", "pull"], check=True)
+        print(Fore.GREEN + Style.BRIGHT + "[✓] Spryzen updated. Please restart the tool.")
+        exit(0)
+    except Exception as e:
+        print(Fore.RED + Style.BRIGHT + f"[X] Update process failed ! Error: {e}")
 
 #Checking update function
 def check_update():
@@ -43,8 +46,9 @@ def check_update():
         return
     
     if local_version != remote_version:
-        print(Fore.YELLOW + Style.BRIGHT + f"[!] Update is available: {local_version} → {remote_version}")
-        print(Fore.RESET + "You can pull latest version on Github: git pull origin main")
+        print(Fore.YELLOW + Style.BRIGHT + f"[!] Update is available: {local_version} → {remote_version}\n")
+        print(Fore.YELLOW + Style.BRIGHT + "Make sure that you restore or stash all changes from the repo to avoid conflict before updating")
+        print(Fore.RESET + "Then you can pull latest version on Github: git pull origin main")
         print("Or you can update it automatically here\n")
         prompt = input(Fore.YELLOW + Style.BRIGHT + "Do you want to update this program ?(yes/no): ").strip().lower()
 
@@ -52,11 +56,12 @@ def check_update():
             updater()
 
         elif prompt == "no":
-            print(Fore.YELLOW + Style.BRIGHT + "[!] Latest version will have new features for the program")
+            print(Fore.YELLOW + Style.BRIGHT + "\n[!] Latest version will have new features for the program")
             print(Fore.YELLOW + Style.BRIGHT + "It is recommended that you update the program to the latest version")
 
         else:
             print(Fore.RED + Style.BRIGHT + "Invalid command")
+            exit(0)
 
     else:
         print(Fore.CYAN + Style.BRIGHT + "Your Spryzen is on the latest version")
