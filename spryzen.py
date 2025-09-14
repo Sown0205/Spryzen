@@ -59,4 +59,9 @@ def main():
             continue
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        print(Fore.RED + Style.BRIGHT + "\nKeyboard interruption ! Exitting the program...")
+        sleep(1)
+        exit()
